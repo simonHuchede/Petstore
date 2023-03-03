@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+  <persistence-unit name="demo-jpa-pu">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://127.0.0.1:3307/biblio" />
+      <property name="javax.persistence.jdbc.user" value="root" />
+      <property name="javax.persistence.jdbc.password" value="root" />
+      <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
+      <property name="hbm2ddl.auto" value="create"/>
+      <property name="hibernate.hbm2ddl.auto" value="create"/>
+      <property name="show_sql" value="true"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="format_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="demo-jpa-banque" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>fr.epsi.banque.Banque</class>
+    <class>fr.epsi.banque.Client</class>
+    <class>fr.epsi.banque.Compte</class>
+    <class>fr.epsi.banque.LivretA</class>
+    <class>fr.epsi.banque.Adresse</class>
+    <class>fr.epsi.banque.Operation</class>
+    <class>fr.epsi.banque.AssuranceVie</class>
+    <class>fr.epsi.banque.Virement</class>
+    <properties>
+      <property name="hibernate.archive.autodetection" value="" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://127.0.0.1:3307/banque" />
+      <property name="javax.persistence.jdbc.user" value="root" />
+      <property name="javax.persistence.jdbc.password" value="root" />
+      <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
+      <property name="hbm2ddl.auto" value="update"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="show_sql" value="true"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="format_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <!-- Drop and create à chaque redémarrage -->
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+    </properties>
+  </persistence-unit>
+</persistence>
